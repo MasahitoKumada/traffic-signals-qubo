@@ -19,8 +19,8 @@ RUN mkdir /home/work
 WORKDIR /home/work
 
 RUN git clone https://github.com/MasahitoKumada/traffic-signals-qubo.git
-RUN git checkout kmd
 
-WORKDIR /traffic-signals-qubo
+WORKDIR /home/work/traffic-signals-qubo
+RUN git checkout kmd
 
 CMD ["/bin/bash"]
