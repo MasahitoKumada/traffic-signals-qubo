@@ -51,7 +51,7 @@ def QBSolve_quantum_solution(Q, times_list, token, annealing_time, print_energy=
     print("Anneal time: ", annealing_time)
     sampler = LeapHybridSampler(token=token)
 
-    start = time.clock()
+    start = time.time()
 
     # try:
 
@@ -65,7 +65,7 @@ def QBSolve_quantum_solution(Q, times_list, token, annealing_time, print_energy=
     qc_time_list.append(qc_time)
     print("\n\n\n\n\nQC TIMES UHUHUHUHUHHUHU", qc_time_list)
 
-    end = time.clock()
+    end = time.time()
 
     # print("INFO: ", response.info)
     print("RESPONSE: ", response)
@@ -101,7 +101,7 @@ def QBSolve_classical_solution(Q, times_list, print_energy=False):
 
     Qdict = Q_dict(Q)
 
-    start = time.clock()
+    start = time.time()
 
     response = QBSolv.QBSolv().sample_qubo(Qdict)
 
@@ -113,7 +113,7 @@ def QBSolve_classical_solution(Q, times_list, print_energy=False):
     if print_energy:
         print("energies=" + str(list(response.data_vectors['energy'])))
 
-    end = time.clock()
+    end = time.time()
 
     time_taken = end - start
 
