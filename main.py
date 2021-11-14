@@ -340,7 +340,7 @@ if __name__ == '__main__':
 
     token = ""
     if args.device=="qpu" or args.device=="QPU":
-        token = "DEV-2c00c79122dc3f29583632b67709c210a728e541"
+        token = "api toekn"  # please input api token.
 
 
     Main(token=token, annealing_time=20, lembda=60)
