@@ -316,7 +316,11 @@ def Main(token, annealing_time, lembda):
     return 0
 
 
-Main(token="", annealing_time=20, lembda=60)
 
+if __name__ == '__main__':
 
-print("Badness List:", main_badness_list)
+    token = "DEV-2c00c79122dc3f29583632b67709c210a728e541"
+
+    Main(token="", annealing_time=20, lembda=60)
+
+    print("Badness List:", main_badness_list)
