@@ -1,3 +1,5 @@
+import sys
+import argparse
 import numpy as np
 import pandas as pd
 from Q_proper import Q
@@ -316,11 +318,31 @@ def Main(token, annealing_time, lembda):
     return 0
 
 
+def get_args():
+
+    # 準備
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--device", type=str)
+
+    # 結果を受ける
+    args = parser.parse_args()
+
+    return args
+
+
+
 
 if __name__ == '__main__':
 
-    token = "DEV-2c00c79122dc3f29583632b67709c210a728e541"
 
-    Main(token="", annealing_time=20, lembda=60)
+    args = get_args()
+
+    token = ""
+    if args.device=="qpu" or args.device=="QPU":
+        token = "DEV-2c00c79122dc3f29583632b67709c210a728e541"
+
+
+    Main(token=token, annealing_time=20, lembda=60)
 
     print("Badness List:", main_badness_list)
