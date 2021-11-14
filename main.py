@@ -320,17 +320,11 @@ def Main(token, annealing_time, lembda):
 
 def get_args():
 
-    # 準備
     parser = argparse.ArgumentParser()
-
     parser.add_argument("--device", type=str)
-
-    # 結果を受ける
     args = parser.parse_args()
 
     return args
-
-
 
 
 if __name__ == '__main__':
@@ -340,8 +334,7 @@ if __name__ == '__main__':
 
     token = ""
     if args.device=="qpu" or args.device=="QPU":
-        token = "api toekn"  # please input api token.
-
+        token = "**** api toekn ****"  # please input api token.
 
     Main(token=token, annealing_time=20, lembda=60)
 
