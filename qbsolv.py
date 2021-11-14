@@ -53,29 +53,30 @@ def QBSolve_quantum_solution(Q, times_list, token, annealing_time, print_energy=
 
     start = time.time()
 
-    # try:
+    try:
 
-    response = sampler.sample_qubo(Qdict, qpu_params={'annealing_time': annealing_time})
+      response = sampler.sample_qubo(Qdict)
+      #response = sampler.sample_qubo(Qdict, qpu_params={'annealing_time': annealing_time})
 
-    timing_dict = response.info
-    # print("\n\n\n\nTIMING INFO: ", timing_dict)
+      timing_dict = response.info
+      # print("\n\n\n\nTIMING INFO: ", timing_dict)
 
-    qc_time = timing_dict["qpu_access_time"]
+      qc_time = timing_dict["qpu_access_time"]
 
-    qc_time_list.append(qc_time)
-    print("\n\n\n\n\nQC TIMES UHUHUHUHUHHUHU", qc_time_list)
+      qc_time_list.append(qc_time)
+      print("\n\n\n\n\nQC TIMES UHUHUHUHUHHUHU", qc_time_list)
 
-    end = time.time()
+      end = time.time()
 
-    # print("INFO: ", response.info)
+      # print("INFO: ", response.info)
+      print("RESPONSE: ", response)
+
+    except ValueError:
+      print("\n\nEXCEPTION FOUND ...............\n")
+      response = QBSolv.QBSolv().sample_qubo(Qdict, solver=sampler)
+      response = QBSolv.QBSolv().sample_qubo(Qdict)
+
     print("RESPONSE: ", response)
-
-    # except ValueError:
-    #     print("\n\nEXCEPTION FOUND ...............\n")
-    #     # response = QBSolv.QBSolv().sample_qubo(Qdict, solver=sampler)
-    #     response = QBSolv.QBSolv().sample_qubo(Qdict)
-
-    # print("RESPONSE: ", response)
 
     print("energies=" + str(list(response.data_vectors['energy'])))
     print("num_occurence=" + str(list(response.data_vectors['num_occurrences'])))
